@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-mode">
+    <div class="container">
+        <div class="form-container" id="loginContainer">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="input-container">
+                    <input type="text" id="loginCredential" placeholder="Correo electrónico o nombre de usuario" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="neon-button">Iniciar Sesión</button>
+            </form>
+            <div class="change-form">
+                <p>¿No tienes una cuenta? <span id="toggleForm">Registrarse</span></p>
+            </div>
+        </div>
+        <div class="form-container hidden" id="signupContainer">
+            <h2>Registrarse</h2>
+            <form id="signupForm">
+                <div class="input-container">
+                    <input type="text" id="newUsername" placeholder="Nuevo nombre de usuario" required>
+                </div>
+                <div class="input-container">
+                    <input type="email" id="newEmail" placeholder="Correo electrónico" required>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="newFaculty" placeholder="Facultad" required>
+                </div>
+                <div class="input-container">
+                    <input type="tel" id="newPhone" placeholder="Teléfono" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="newPassword" placeholder="Nueva contraseña" required>
+                </div>
+                <button type="submit" class="neon-button">Crear Usuario</button>
+            </form>
+            <div class="change-form">
+                <p>¿Ya tienes una cuenta? <span id="toggleLoginForm">Iniciar Sesión</span></p>
+            </div>
+        </div>
+        <div class="message-container hidden" id="welcomeMessage">
+            <p id="welcomeText"></p>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    width: 320px;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 2px solid #555;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #444;
+    color: #fff;
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.change-form {
+    color: #555;
+    font-size: 14px;
+}
+
+.change-form span {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.change-form span:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-container input:focus {
+    outline: none;
+    border-color: #f0a500;
+}
+
+.neon-button {
+    background-color: transparent;
+    color: #f0a500;
+    border: 2px solid #f0a500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.neon-button:hover {
+    background-color: #f0a500;
+    color: #121212;
+    box-shadow: 0 0 5px #f0a500,
+                0 0 10px #f0a500,
+                0 0 20px #f0a500,
+                0 0 40px #f0a500,
+                0 0 80px #f0a500;
+}
+/* Agrega los estilos proporcionados */
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px; /* Agregamos margen inferior para separar los campos */
+}
+
+.input-container input {
+    width: 100%; /* Ajustamos el ancho al 100% */
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box; /* Añadimos box-sizing para incluir el padding en el ancho total */
+}
+
+.input-container input:focus {
+    outline: none;
+    border-color: #f0a500;
+}
+
+.neon-button {
+    width: 100%; /* Ajustamos el ancho del botón al 100% */
+    padding: 12px;
+    box-sizing: border-box; /* Añadimos box-sizing para incluir el padding en el ancho total */
+}
+
+.message-container {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+    display: none; /* Por defecto, ocultar la alerta */
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
