@@ -1,21 +1,8 @@
 <?php
-// Configuración de la conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_p1cyber";
-$port = 33065; // Puerto MySQL personalizado
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+include_once '../conexion.php';
 
 // Consulta SQL para seleccionar todos los usuarios
-$sql = "SELECT * FROM us"; // "users" es el nombre de tu tabla de usuarios, asegúrate de que sea el correcto
+$sql = "SELECT * FROM us ORDER BY created_at DESC";
 
 $result = $conn->query($sql);
 

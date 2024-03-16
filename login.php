@@ -1,21 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_p1cyber";
-$port = 33065; // Puerto MySQL personalizado
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    $response = array("success" => false, "error" => "La conexión falló: " . $conn->connect_error);
-    echo json_encode($response);
-    exit();
-}
+include_once 'conexion.php';
 
 // Verificar si se envió el formulario de inicio de sesión
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -36,33 +22,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = $result->fetch_assoc();
             // Verificar si la cuenta está bloqueada
             if ($user['activo'] == 0) {
-                // La cuenta está bloqueada
-                $response = array("success" => false, "error" => "Su cuenta está bloqueada. Por favor, póngase en contacto con el administrador.");
+                // La cuenta está inactiva
+                $response = array("success" => false, "message" => "Tu cuenta por el momento no está activa. Espera a que el administrador la active.");
                 echo json_encode($response);
-            } else {
+                exit();
+            }else {
                 // La cuenta está activa, verificar la contraseña hasheada
                 if (password_verify($password, $user['contra'])) {
-                    $response = array("success" => true, "message" => "Inicio de sesión exitoso");
+                    // Inicio de sesión exitoso
                     session_start();
-                    $_SESSION['loggedInUser'] = $user['nombre_us']; // o $user['id'], dependiendo de tu lógica de sesión
+                    $_SESSION['loggedInUser'] = $user['nombre_us']; 
 
+                    // Enviar tipo de usuario en la respuesta
+                    $response = array("success" => true, "message" => "Inicio de sesión exitoso", "tipo" => $user['tipo']);
                     echo json_encode($response);
                 } else {
+                    // Contraseña incorrecta
                     $response = array("success" => false, "error" => "Contraseña incorrecta");
                     echo json_encode($response);
                 }
             }
         } else {
+            // Usuario no encontrado
             $response = array("success" => false, "error" => "Usuario no encontrado");
             echo json_encode($response);
         }
 
         $stmt->close();
     } else {
+        // No se recibieron todos los datos del formulario
         $response = array("success" => false, "error" => "No se recibieron todos los datos del formulario");
         echo json_encode($response);
     }
 } else {
+    // No se recibió una solicitud POST
     $response = array("success" => false, "error" => "No se recibió una solicitud POST");
     echo json_encode($response);
 }

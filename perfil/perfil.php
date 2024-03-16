@@ -1,29 +1,19 @@
 <?php
-header('Content-Type: application/json');
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_p1cyber";
-$port = 33065; // Puerto MySQL personalizado
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    $response = array("success" => false, "error" => "La conexión falló: " . $conn->connect_error);
-    echo json_encode($response);
-    exit();
-}
-
-// Verificar si el usuario ha iniciado sesión
 session_start();
+header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+include_once '../conexion.php';
+
 if (!isset($_SESSION['loggedInUser'])) {
-    // Si el usuario no ha iniciado sesión, devuelve un error
-    echo json_encode(array('error' => 'Usuario no autenticado'));
-    exit();
+    header('Location: ../index.php');
+    exit;
 }
+
+
 
 // Obtener el nombre de usuario de la sesión
 $username = $_SESSION['loggedInUser'];

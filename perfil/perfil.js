@@ -1,90 +1,4 @@
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Obtener el nombre de usuario de la sesión
-//     const username = sessionStorage.getItem("loggedInUser");
 
-//     // Mostrar el nombre de usuario en la bienvenida
-//     const welcomeText = document.getElementById("welcomeText");
-//     welcomeText.textContent = `Welcome, ${username}!`;
-
-//     // Obtener información del usuario desde el almacenamiento local
-//     const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
-//     const currentUser = registeredUsers.find(user => user.username === username);
-
-//     if (currentUser) {
-//         // Construir la tarjeta de información del usuario
-//         const userCard = document.getElementById("userCard");
-//         const userCardHTML = `
-//             <div class="card">
-//                 <h2>Nombre de usuario: ${currentUser.username}</h2>
-//                 <p>Correo electrónico: ${currentUser.email}</p>
-//                 <p>Facultad: ${currentUser.faculty}</p>
-//                 <p>Teléfono: ${currentUser.phone}</p>
-//                 <button class="edit-button">Editar <i class="fas fa-pencil-alt"></i></button>
-//             </div>
-//         `;
-//         userCard.innerHTML = userCardHTML;
-
-//         // Agregar evento de click al botón de editar
-//         const editButton = document.querySelector(".edit-button");
-//         editButton.addEventListener("click", function() {
-//             // Abrir el modal de edición
-//             const modal = document.getElementById("editModal");
-//             modal.style.display = "block";
-
-//             // Rellenar los campos del formulario con los datos del usuario actual
-//             document.getElementById("editEmail").value = currentUser.email;
-//             document.getElementById("editFaculty").value = currentUser.faculty;
-//             document.getElementById("editPhone").value = currentUser.phone;
-//         });
-
-//         // Obtener el botón de cerrar del modal
-//         const closeButton = document.querySelector(".close");
-
-//         // Cerrar el modal al hacer clic en el botón de cerrar (x)
-//         closeButton.addEventListener("click", function() {
-//             const modal = document.getElementById("editModal");
-//             modal.style.display = "none";
-//         });
-
-//         // Cerrar el modal al hacer clic fuera del modal
-//         window.onclick = function(event) {
-//             const modal = document.getElementById("editModal");
-//             if (event.target === modal) {
-//                 modal.style.display = "none";
-//             }
-//         };
-
-//         // Agregar evento de envío para el formulario de edición
-//         const editForm = document.getElementById("editForm");
-//         editForm.addEventListener("submit", function(event) {
-//             event.preventDefault(); // Evitar el envío del formulario por defecto
-
-//             // Obtener los nuevos valores del formulario
-//             const newEmail = document.getElementById("editEmail").value;
-//             const newFaculty = document.getElementById("editFaculty").value;
-//             const newPhone = document.getElementById("editPhone").value;
-
-//             // Actualizar los datos del usuario en el localStorage
-//             currentUser.email = newEmail;
-//             currentUser.faculty = newFaculty;
-//             currentUser.phone = newPhone;
-
-//             // Actualizar la información en el localStorage
-//             localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
-
-//             // Cerrar el modal después de guardar los cambios
-//             const modal = document.getElementById("editModal");
-//             modal.style.display = "none";
-
-//             // Mostrar un mensaje de éxito
-//             alert("¡Datos actualizados con éxito!");
-//         });
-//     } else {
-//         // Si no se encuentra el usuario, redirigir a la página de inicio de sesión
-//         alert("Usuario no encontrado. Por favor, inicia sesión.");
-//         window.location.href = "../main.html";
-//     }
-// });
 
 
 //!funcional
@@ -110,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const userCard = document.getElementById("userCard");
         const userCardHTML = `
             <div class="card">
-                <h2>Nombre de usuario: ${username}</h2>
+                <br></br>
                 <p>Correo electrónico: ${data.email}</p>
                 <p>Facultad: ${data.facultad}</p>
                 <p>Teléfono: ${data.telefono}</p>

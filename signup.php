@@ -1,21 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_p1cyber";
-$port = 33065; // Puerto MySQL personalizado
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    $response = array("success" => false, "error" => "La conexión falló: " . $conn->connect_error);
-    echo json_encode($response);
-    exit();
-}
+include_once 'conexion.php';
 
 // Verificar si se envió el formulario de registro
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -37,7 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("issssss", $uuid, $us, $email, $faculty, $phone, $accountNumber, $password);
 
         if ($stmt->execute() === TRUE) {
-            $response = array("success" => true, "message" => "Usuario registrado correctamente");
+            // Si el registro fue exitoso, redirigir al usuario a la página de perfil
+            session_start();
+            $_SESSION['loggedInUser'] = $us; // Establecer la sesión del usuario recién registrado
+            // $response = array("success" => true, "message" => "Usuario registrado correctamente", "redirect" => "perfil.php");
+            $response = array("success" => true, "message" => "Tu cuenta está en proceso de activación. El administrador aceptará tu cuenta lo antes posible si cumples con los requerimientos.", "redirect" => "main.html");
+
             echo json_encode($response);
         } else {
             $response = array("success" => false, "error" => "Error al registrar el usuario: " . $conn->error);

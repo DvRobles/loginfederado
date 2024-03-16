@@ -1,21 +1,16 @@
 <?php
 header('Content-Type: application/json');
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_p1cyber";
-$port = 33065; // Puerto MySQL personalizado
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    $response = array("success" => false, "error" => "La conexión falló: " . $conn->connect_error);
-    echo json_encode($response);
+include_once '../conexion.php';
+// Verificar si el usuario ha iniciado sesión
+session_start();
+if (!isset($_SESSION['loggedInUser'])) {
+    // Si el usuario no ha iniciado sesión, devuelve un error y destruye la sesión
+    echo json_encode(array('error' => 'Usuario no autenticado'));
+    session_destroy();
     exit();
 }
+
+
 
 // Verificar si se envió el formulario de edición
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -25,14 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $editedEmail = htmlspecialchars($_POST['editedEmail']);
         $editedFaculty = htmlspecialchars($_POST['editedFaculty']);
         $editedPhone = htmlspecialchars($_POST['editedPhone']);
-
-        // Verificar si el usuario ha iniciado sesión
-        session_start();
-        if (!isset($_SESSION['loggedInUser'])) {
-            // Si el usuario no ha iniciado sesión, devuelve un error
-            echo json_encode(array('error' => 'Usuario no autenticado'));
-            exit();
-        }
 
         // Obtener el nombre de usuario de la sesión
         $username = $_SESSION['loggedInUser'];

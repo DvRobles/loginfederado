@@ -243,6 +243,8 @@ h2 {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 90%; /* Altura fija del panel */
+    overflow-y: auto; /* Hacer scrollable verticalmente */
 }
 
 .user-table {
@@ -252,7 +254,6 @@ h2 {
     background-color: #333;
     border-radius: 8px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
-    overflow: hidden;
 }
 
 .user-table th,
@@ -319,3 +320,39 @@ h2 {
     animation: fadeInRow 0.5s ease-out;
 }
 
+
+
+.success-message {
+    color: green;
+    background-color: #ccffcc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    background-color: #ffcccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+.message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    color: #fff;
+    display: none; /* Oculto inicialmente */
+}
+
+.success-message {
+    background-color: #4CAF50; /* Verde */
+}
+
+.error-message {
+    background-color: #f44336; /* Rojo */
+}

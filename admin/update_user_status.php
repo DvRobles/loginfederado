@@ -1,22 +1,10 @@
 <?php
-// Configuración de la conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_p1cyber";
-$port = 33065; // Puerto MySQL personalizado
+include_once '../conexion.php';
 
 // Obtener los parámetros de la URL
 $id_usuario = $_GET['id_usuario'];
 $status = $_GET['status'];
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
 
 // Consulta SQL para actualizar el estado del usuario
 $sql = "UPDATE us SET activo = $status WHERE id = $id_usuario";
